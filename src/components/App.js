@@ -23,12 +23,16 @@ export default class App extends React.Component {
       .then(items => this.setState({ fruit }))
   }
 
+  updateFilter = event => {
+    this.setState({ currentFilter: event.target.value })
+  }
+
 
   render() {
     return(
       <Filter filters={this.state.filters} handleChange={this.state.handleFruitTypes}/>,
       <FilteredFruitList fruit={this.state.fruit} filter="" />,
-      <FruitBasket fruit={this.state.fruit} filters={this.state.filters} currentFilter="" updateFilterCallback=""/>
+      <FruitBasket fruit={this.state.fruit} filters={this.state.filters} currentFilter={this.state.currentFilter} updateFilterCallback={this.state.updateFilter}/>
     )
   }
 }
