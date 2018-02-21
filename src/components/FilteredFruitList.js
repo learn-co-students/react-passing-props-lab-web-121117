@@ -26,4 +26,9 @@ class FilteredFruitList extends Component {
   }
 }
 
+FilteredFruitList.defaultProps = {
+  fruit: "",
+  filter: ""
+}
+
 export default FilteredFruitList;
