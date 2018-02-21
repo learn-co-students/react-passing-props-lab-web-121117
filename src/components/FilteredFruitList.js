@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 
-class FilteredFruitList extends Component {
+const FilteredFruitList = (props) => {
+  const list = !props.filter || props.filter === 'all' ? props.fruit : props.fruit.filter(i => i.fruit_type === props.filter);
 
-  render() {
-    const list = !this.props.filter || this.props.filter === 'all' ? this.props.fruit : this.props.fruit.filter(i => i.fruit_type === this.props.filter);
-
-    return (
-      <ul className="fruit-list">
-        {list.map((item, index) => <li key={index}>{item.char}</li>)}
-      </ul>
-    );
-  }
+  return (
+    <ul className="fruit-list">
+      {list.map((item, index) => <li key={index}>{item.char}</li>)}
+    </ul>
+  );
 }
 
 FilteredFruitList.defaultProps = {
