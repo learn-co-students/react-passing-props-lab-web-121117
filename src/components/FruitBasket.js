@@ -15,7 +15,7 @@ const FruitBasket = (props) => {
 FruitBasket.defaultProps = {
   fruit:[],
   filters:[] ,
-  currentFilter:"",
+  currentFilter:"all",
   updateFilterCallback: function() {}
 }
 // class FruitBasket extends Component {

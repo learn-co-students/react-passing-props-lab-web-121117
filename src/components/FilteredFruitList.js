@@ -12,7 +12,7 @@ const FilteredFruitList = (props) => {
 
 FilteredFruitList.defaultProps = {
   fruit: [],
-  filter: null
+  filter: 'all'
 }
 // class FilteredFruitList extends Component {
 //   constructor(props) {
