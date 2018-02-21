@@ -11,6 +11,7 @@ class App extends React.Component {
   
   componentWillMount() {
     this.fetchFilters();
+    this.fetchFruit();
   }
   
   fetchFilters = () => {
@@ -19,8 +20,23 @@ class App extends React.Component {
       .then(filters => this.setState({ filters }));
   }
   
+  fetchFruit = () => {
+    fetch('/api/fruit')
+      .then(response => response.json())
+      .then(fruit => this.setState({ fruit }));
+  }
+  
+  handleFilterChange = event => {
+    console.log('new filter: ', event.target.value);
+    this.setState({ currentFilter: event.target.value });
+  }
+  
   render(){
-    return <FruitBasket filters={this.state.filters}/>
+    return <FruitBasket 
+    filters={this.state.filters}
+    handleChange={this.handleFilterChange}
+    currentFilter={this.state.currentFilter}
+    fruit={this.state.fruit}/>
   }
 }
 
