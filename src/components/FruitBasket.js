@@ -1,32 +1,24 @@
-import React, { Component }  from 'react';
+import React, { Component } from "react";
 
-import Filter from './Filter';
-import FilteredFruitList from './FilteredFruitList.js';
+import Filter from "./Filter";
+import FilteredFruitList from "./FilteredFruitList.js";
+import PropTypes from "prop-types";
 
-class FruitBasket extends Component {
-  constructor() {
-    super();
+const FruitBasket = props => {
+  FruitBasket.defaultProps = {
+    fruit: [],
+    filters: "",
+    currentFilter: "",
+    updateFilterCallback: PropTypes.function
+  };
 
-    this.state = {
-      filters: [],
-      selectedFilter: null
-    };
-  }
-
-  handleFilterChange = event => {
-    console.log('new filter: ', event.target.value);
-    this.setState({ selectedFilter: event.target.value });
-  }
-
-  render() {
-    return (
-      <div className="fruit-basket">
-        <Filter handleChange={this.handleFilterChange} />
-        <FilteredFruitList
-          filter={this.state.selectedFilter} />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="fruit-basket">
+      {console.log(props.currentFilter)}
+      <Filter filters={props.filters} handleChange={props.handleChange} />
+      <FilteredFruitList filter={props.currentFilter} fruit={props.fruit} />
+    </div>
+  );
+};
 
 export default FruitBasket;
